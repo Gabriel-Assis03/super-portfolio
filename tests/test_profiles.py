@@ -7,7 +7,7 @@ pytestmark = pytest.mark.dependency()
 
 def test_profile_post_request(auth_client, profile_seed):
     response = auth_client.post(
-        "/profiles/ ",
+        "/profiles/",
         {
             "name": "Profile 2",
             "github": "http://myfakeurl.com",
