@@ -9,3 +9,14 @@ class Profile(models.Model):
     def __str__(self) -> str:
         return self.name
 
+
+class Project(models.Model):
+    name = models.CharField(max_length=50, null=False)
+    description = models.TextField(max_length=500, null=False)
+    github_url = models.URLField(max_length=500, null=False)
+    keyword = models.CharField(max_length=50, null=False)
+    key_skill = models.CharField(max_length=50, null=False)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='projects')
+
+    def __str__(self) -> str:
+        return self.name
