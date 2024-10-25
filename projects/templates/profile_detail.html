@@ -5,9 +5,27 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{{name}}</h2>
-    <a href="{{linkedin}}">{{linkedin}}</a>
+    <h2>{{profile.name}}</h2>
+    <a href="{{linkedin}}">{{profile.linkedin}}</a>
     <br>
-    <a href="{{github}}">{{github}}</a>
-    <p>{{ bio }}</p>
+    <a href="{{github}}">{{profile.github}}</a>
+    <p>{{profile.bio}}</p>
+    <div>
+        {% for project in projects %}
+        <div>
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.description }}</p>
+            <p>{{ project.keyword }}</p>
+            <p>{{ project.key_skill }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        {% for certificate in certificates %}
+          <div>
+            <h3>{{ certificate.name }}</h3>
+            <p>{{ certificate.certifying_institution }}</p>
+          </div>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -18,6 +18,11 @@ class ProfileViewSet(viewsets.ModelViewSet):
         if request.method == 'GET':
             id = kwargs.get('pk')
             profile = get_object_or_404(self.queryset, id=id)
-            serialize_profile = ProfileSerializer(profile).data
-            return render(request, "profile_detail.html", serialize_profile)
+            context = {
+                'profile': profile,
+                'projects': profile.projects.all(),
+                'certificates': profile.certificates.all()
+            }
+            print(profile.certificates.all())
+            return render(request, "profile_detail.html", context)
         return super().retrieve(request, *args, **kwargs)
